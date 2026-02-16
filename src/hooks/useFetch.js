@@ -6,6 +6,12 @@ export default function useFetch(url) {
   const [error,setError] = useState(null);
 
   const fetchData = useCallback(async () => {
+    if(!navigator.onLine) {
+      setError("No internet connection");
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
