@@ -36,6 +36,18 @@ export default function useFetch(url) {
 
   useEffect(()=>{
     fetchData();
+    
+    const handleOffline = () => {
+      setError("No internet connection");
+      setLoading(false);
+
+    };
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+    };
+    
   },[fetchData]);
 
   return {data, loading, error};
