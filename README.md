@@ -25,9 +25,7 @@
 
 - handled neteork errors using try-catch
 - Displayed error messages
-
-5. With Netlify Link
-- https://react-custom-hooks-usefetch.netlify.app/
+- 
 
 4. Using Tailwind CSS
 
@@ -39,3 +37,5 @@
 
 - npm run dev
 
+5. With Netlify Link
+- https://react-custom-hooks-usefetch.netlify.app/
