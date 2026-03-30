@@ -1,7 +1,7 @@
-import PhotoGrid from "./components/PhotoGrid";
+import ProductList from './components/productList';
 
 function App() {
-  return <PhotoGrid />;
+  return <ProductList />;
 }
 
 export default App;

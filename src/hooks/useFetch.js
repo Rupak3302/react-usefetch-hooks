@@ -1,21 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
 
-export default function useFetch(url) {
-  const [data,setData] = useState(null);
-  const [loading,setLoading] = useState(true);
-  const [error,setError] = useState(null);
+// Custom hook for fetching data from an API
+  const useFetch = (url) => {
+    const [data,setData] = useState(null);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState(null);
 
+// Fetch function using useCallback 
   const fetchData = useCallback(async () => {
-    if(!navigator.onLine) {
-      setError("No internet connection");
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
 
     try{
+      setLoading(true);
+      setError(null);
+
       const res = await fetch(url);
 
       if(!res.ok){
@@ -25,30 +22,19 @@ export default function useFetch(url) {
       const json = await res.json();
       setData(json);
 
-    }catch(err){
+    } catch(err) {
       setError(err.message);
-    }
-    finally{
+    } finally {
       setLoading(false);
     }
+  }, [url]);
 
-  },[url]);
-
+  //Fetch data when URL changes
   useEffect(()=>{
     fetchData();
-    
-    const handleOffline = () => {
-      setError("No internet connection");
-      setLoading(false);
-
-    };
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("offline", handleOffline);
-    };
-    
   },[fetchData]);
 
   return {data, loading, error};
-}
+};
+
+export default useFetch;

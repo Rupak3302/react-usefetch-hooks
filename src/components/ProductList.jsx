@@ -2,8 +2,7 @@ import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 import ErrorScreen from "./ErrorScreen";
 
-export default function PhotoGrid() {
-
+const ProductList = () => {
   const { data, loading, error } =
     useFetch("https://api.escuelajs.co/api/v1/products");
 
@@ -27,7 +26,8 @@ export default function PhotoGrid() {
         lg:grid-cols-4
         gap-1
       ">
-        {data.slice(1, 29).map((item)=>(
+        {data &&
+          data.slice(0, 12).map((item) => (
           <div
             key={item.id}
             className="border border-white text-center p-6 pb-12"
@@ -35,7 +35,7 @@ export default function PhotoGrid() {
             <img
               src={item.images[0]}
               alt={item.title}
-              className="w-full h-full size-75 object-contain px-8 pb-2"
+              className="w-full h-full size-75 object-cover px-8 pb-2"
             />
             <p className="text-sm">
               {item.title}
@@ -48,3 +48,4 @@ export default function PhotoGrid() {
 }
 
 
+export default ProductList;
