@@ -1,16 +1,39 @@
-# React + Vite
+## React custom hooks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-I created a React custom Hook called **useFetch** using **useState**, **useEffect** and **useCallback** to hendle API data fetching.
 
-Currently, two official plugins are available:
+-This hooks manages Loding, Error and Data states efficently.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Key Decisions Made
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Using custom Hook (**useFetch**)
 
-## Expanding the ESLint configuration
+- Create reusable logic for API calls
+- State variables for data, Loder and ErrorScreen
+- Used useCallback to memoize the fetch function 
+- Reduced code duplication
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+2. components seperations
+
+- Used **ProuductList** for UI
+- Used **Loder** and **ErrorScreen** for better stste handling 
+
+
+3. Error Hendeling 
+
+- handled neteork errors using try-catch
+- Displayed error messages
+
+
+4. Using Tailwind CSS
+
+- For fast and responsive UI design
+- Implemented responsive photo gRid system for different screen sizes
+
+
+## Run this
+
+- npm run dev
+
